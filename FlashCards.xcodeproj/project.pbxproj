@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		93FF039D1F7856CA00B19916 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF039C1F7856CA00B19916 /* AppDelegate.swift */; };
-		93FF039F1F7856CA00B19916 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF039E1F7856CA00B19916 /* ViewController.swift */; };
+		93FF039F1F7856CA00B19916 /* DeckSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF039E1F7856CA00B19916 /* DeckSelectionViewController.swift */; };
 		93FF03A21F7856CA00B19916 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93FF03A01F7856CA00B19916 /* Main.storyboard */; };
 		93FF03A41F7856CA00B19916 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93FF03A31F7856CA00B19916 /* Assets.xcassets */; };
 		93FF03A71F7856CA00B19916 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93FF03A51F7856CA00B19916 /* LaunchScreen.storyboard */; };
+		93FF03B01F78586900B19916 /* DeckSelectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF03AF1F78586900B19916 /* DeckSelectionModel.swift */; };
+		93FF03B21F78B28300B19916 /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF03B11F78B28300B19916 /* FlashCardViewController.swift */; };
+		93FF03B41F78B2AC00B19916 /* FlashCardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FF03B31F78B2AC00B19916 /* FlashCardModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		93FF03991F7856CA00B19916 /* FlashCards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashCards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93FF039C1F7856CA00B19916 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		93FF039E1F7856CA00B19916 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		93FF039E1F7856CA00B19916 /* DeckSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckSelectionViewController.swift; sourceTree = "<group>"; };
 		93FF03A11F7856CA00B19916 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93FF03A31F7856CA00B19916 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93FF03A61F7856CA00B19916 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93FF03A81F7856CA00B19916 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93FF03AF1F78586900B19916 /* DeckSelectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeckSelectionModel.swift; sourceTree = "<group>"; };
+		93FF03B11F78B28300B19916 /* FlashCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
+		93FF03B31F78B2AC00B19916 /* FlashCardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashCardModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,25 @@
 		93FF039B1F7856CA00B19916 /* FlashCards */ = {
 			isa = PBXGroup;
 			children = (
-				93FF039C1F7856CA00B19916 /* AppDelegate.swift */,
-				93FF039E1F7856CA00B19916 /* ViewController.swift */,
+				93FF039E1F7856CA00B19916 /* DeckSelectionViewController.swift */,
+				93FF03B11F78B28300B19916 /* FlashCardViewController.swift */,
+				93FF03B31F78B2AC00B19916 /* FlashCardModel.swift */,
+				93FF03AF1F78586900B19916 /* DeckSelectionModel.swift */,
 				93FF03A01F7856CA00B19916 /* Main.storyboard */,
+				93FF03AE1F7857EE00B19916 /* Supporting Files */,
+			);
+			path = FlashCards;
+			sourceTree = "<group>";
+		};
+		93FF03AE1F7857EE00B19916 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				93FF039C1F7856CA00B19916 /* AppDelegate.swift */,
 				93FF03A31F7856CA00B19916 /* Assets.xcassets */,
 				93FF03A51F7856CA00B19916 /* LaunchScreen.storyboard */,
 				93FF03A81F7856CA00B19916 /* Info.plist */,
 			);
-			path = FlashCards;
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,8 +153,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93FF039F1F7856CA00B19916 /* ViewController.swift in Sources */,
+				93FF03B01F78586900B19916 /* DeckSelectionModel.swift in Sources */,
+				93FF039F1F7856CA00B19916 /* DeckSelectionViewController.swift in Sources */,
+				93FF03B41F78B2AC00B19916 /* FlashCardModel.swift in Sources */,
 				93FF039D1F7856CA00B19916 /* AppDelegate.swift in Sources */,
+				93FF03B21F78B28300B19916 /* FlashCardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
