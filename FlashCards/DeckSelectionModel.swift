@@ -3,6 +3,11 @@ import Foundation
 struct Card {
     let front: String
     let back: String
+    
+    func returnDictionary() -> [String: String] {
+        let dictionary: [String: String] = [front: back]
+        return dictionary
+    }
 }
 
 class Deck {
@@ -11,6 +16,16 @@ class Deck {
     
     init(_ cards: [Card]) {
         self.cards = cards
+    }
+    
+    func returnDictionary() -> [[String: String]] {
+        var deckDictionary = [[String: String]]()
+        
+        for card in cards {
+            deckDictionary.append(card.returnDictionary())
+        }
+        
+        return deckDictionary
     }
     
 }
@@ -24,6 +39,7 @@ class DeckSelectionModel {
     init() {
         let decks = DeckSelectionModel.buildOutDecks()
         self.decks = decks
+        storeDecks()
     }
     
     func addDeck(withTitle title: String) {
@@ -33,6 +49,27 @@ class DeckSelectionModel {
     func deckForSelection() -> Deck {
         guard let selectedKey = selectedDeck else { return Deck([]) }
         return decks[selectedKey]!
+    }
+    
+    func storeDecks() {
+        let directoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        
+        do {
+            let data = try PropertyListSerialization.data(fromPropertyList: returnDecksAsDictionaries(), format: .xml, options: 0)
+            try data.write(to: directoryURL.appendingPathComponent("decks.plist"))
+        } catch {
+            
+        }
+    }
+    
+    private func returnDecksAsDictionaries() -> [String: [[String: String]]] {
+        var decksDictionary = [String: [[String: String]]]()
+        
+        for deck in decks {
+            decksDictionary[deck.key] = deck.value.returnDictionary()
+        }
+        
+        return decksDictionary
     }
     
     private class func buildOutDecks() -> [String: Deck] {
