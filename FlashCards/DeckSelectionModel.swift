@@ -5,9 +5,19 @@ struct Card {
     let back: String
 }
 
+class Deck {
+    
+    var cards: [Card]
+    
+    init(_ cards: [Card]) {
+        self.cards = cards
+    }
+    
+}
+
 class DeckSelectionModel {
     
-    let decks: [String: [Card]]
+    private(set) var decks: [String: Deck]
     
     var selectedDeck: String?
     
@@ -16,12 +26,16 @@ class DeckSelectionModel {
         self.decks = decks
     }
     
-    func deckForSelection() -> [Card] {
-        guard let selectedKey = selectedDeck else { return [] }
+    func addDeck(withTitle title: String) {
+        decks[title] = Deck([])
+    }
+    
+    func deckForSelection() -> Deck {
+        guard let selectedKey = selectedDeck else { return Deck([]) }
         return decks[selectedKey]!
     }
     
-    private class func buildOutDecks() -> [String: [Card]] {
+    private class func buildOutDecks() -> [String: Deck] {
         
         // English / Spanish
         let rojo = Card(front: "Rojo", back: "Red")
@@ -37,9 +51,15 @@ class DeckSelectionModel {
         let vert = Card(front: "Vert", back: "Green")
         let bleu = Card(front: "Bleu", back: "Blue")
         
-        return [
-            "Spanish" : [rojo, naranja, amarillo, verde, azul],
-            "French" : [rouge, orange, jaune, vert, bleu]
-        ]
+        var returnDeck: [String: Deck] = Dictionary()
+        returnDeck["Spanish"] = Deck([rojo, naranja, amarillo, verde, azul])
+        returnDeck["French"] = Deck([rouge, orange, jaune, vert, bleu])
+        
+        return returnDeck
+        
+//        return [
+//            "Spanish" : [rojo, naranja, amarillo, verde, azul],
+//            "French" : [rouge, orange, jaune, vert, bleu]
+//        ]
     }
 }

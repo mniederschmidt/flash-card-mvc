@@ -60,8 +60,15 @@
                             <constraint firstItem="4OL-L9-rti" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qH2-A9-j7j"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="fIg-Kj-8Zg"/>
+                    <navigationItem key="navigationItem" id="fIg-Kj-8Zg">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fAy-0p-iii">
+                            <connections>
+                                <action selector="addDeck:" destination="BYZ-38-t0r" id="eWP-vN-1u0"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="decksTableView" destination="4OL-L9-rti" id="1pB-26-Xri"/>
                         <segue destination="YaP-Za-tvx" kind="show" identifier="showDeck" id="bBR-ls-GJf"/>
                     </connections>
                 </viewController>
@@ -107,8 +114,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJy-j4-fV0">
-                                <rect key="frame" x="0.0" y="193.5" width="30" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <rect key="frame" x="0.0" y="193.5" width="67" height="39"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="&lt;">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -117,8 +124,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUT-9n-AU3">
-                                <rect key="frame" x="345" y="193.5" width="30" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <rect key="frame" x="307" y="193.5" width="68" height="39"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <state key="normal" title="&gt;">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -126,29 +133,77 @@
                                     <action selector="nextButtonPressed:" destination="YaP-Za-tvx" eventType="touchUpInside" id="wXY-ah-p46"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TMd-A3-F4R">
+                                <rect key="frame" x="16" y="401" width="343" height="222"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="cei-dq-50h" detailTextLabel="gVN-Yj-a2L" style="IBUITableViewCellStyleValue1" id="Tj5-ym-252">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tj5-ym-252" id="UrG-wf-9Vw">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cei-dq-50h">
+                                                    <rect key="frame" x="15" y="12" width="33.5" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gVN-Yj-a2L">
+                                                    <rect key="frame" x="284" y="12" width="44" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cUT-9n-AU3" firstAttribute="centerY" secondItem="aVy-NR-sIn" secondAttribute="centerY" id="2oq-Zr-Z49"/>
                             <constraint firstItem="pMh-hB-QKx" firstAttribute="bottom" secondItem="oLM-B5-4og" secondAttribute="centerY" priority="750" id="SM6-qv-Mfh"/>
                             <constraint firstItem="Jl8-tR-tCF" firstAttribute="centerX" secondItem="oLM-B5-4og" secondAttribute="centerX" id="Tfx-M2-0Ge"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="cUT-9n-AU3" secondAttribute="trailing" constant="-16" id="Vx1-Wg-nU2"/>
                             <constraint firstItem="dJy-j4-fV0" firstAttribute="centerY" secondItem="aVy-NR-sIn" secondAttribute="centerY" id="X3K-kH-ehb"/>
+                            <constraint firstItem="TMd-A3-F4R" firstAttribute="top" secondItem="Jl8-tR-tCF" secondAttribute="bottom" constant="20" id="ZRP-bL-eKs"/>
+                            <constraint firstItem="pMh-hB-QKx" firstAttribute="leading" secondItem="dJy-j4-fV0" secondAttribute="trailing" id="eIe-TW-OkA"/>
+                            <constraint firstAttribute="trailing" secondItem="cUT-9n-AU3" secondAttribute="trailing" id="eQX-9g-KcN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TMd-A3-F4R" secondAttribute="trailing" id="ejd-TQ-GRT"/>
+                            <constraint firstItem="TMd-A3-F4R" firstAttribute="leading" secondItem="oLM-B5-4og" secondAttribute="leadingMargin" id="iLx-eK-C4I"/>
                             <constraint firstItem="Jl8-tR-tCF" firstAttribute="top" secondItem="pMh-hB-QKx" secondAttribute="bottom" constant="17.5" id="kC0-NO-YtA"/>
+                            <constraint firstItem="dJy-j4-fV0" firstAttribute="leading" secondItem="oLM-B5-4og" secondAttribute="leading" id="nYl-w8-a1J"/>
                             <constraint firstItem="pMh-hB-QKx" firstAttribute="centerX" secondItem="oLM-B5-4og" secondAttribute="centerX" id="r65-sA-DJW"/>
                             <constraint firstItem="pMh-hB-QKx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="15f-5s-vdA" secondAttribute="bottom" constant="20" id="rMw-az-QXt"/>
-                            <constraint firstItem="dJy-j4-fV0" firstAttribute="leading" secondItem="oLM-B5-4og" secondAttribute="leadingMargin" constant="-16" id="sIe-fb-bAy"/>
+                            <constraint firstItem="Ziu-YE-qDT" firstAttribute="top" secondItem="TMd-A3-F4R" secondAttribute="bottom" id="tyf-Fw-rLm"/>
+                            <constraint firstItem="cUT-9n-AU3" firstAttribute="leading" secondItem="pMh-hB-QKx" secondAttribute="trailing" id="yG6-fH-uet"/>
                             <constraint firstItem="Ziu-YE-qDT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="pMh-hB-QKx" secondAttribute="bottom" constant="50" id="zPa-77-r7e"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="hp5-QP-A3P"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="PDo-Cs-4su">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="aNP-sM-3EC">
+                            <connections>
+                                <action selector="addCardToDeck:" destination="YaP-Za-tvx" id="LeA-rd-Uk3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="deckTableView" destination="TMd-A3-F4R" id="AeY-ZP-u3v"/>
                         <outlet property="flipView" destination="pMh-hB-QKx" id="SUj-07-ZZj"/>
                         <outlet property="flipViewTextLabel" destination="aVy-NR-sIn" id="baI-ey-rHJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pgu-sX-7DP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1737" y="-647"/>
+            <point key="canvasLocation" x="1736.8" y="-647.22638680659679"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2Pf-tn-zSg">

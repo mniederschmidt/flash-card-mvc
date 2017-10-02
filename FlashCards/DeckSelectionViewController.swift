@@ -2,6 +2,8 @@ import UIKit
 
 class DeckSelectionViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var decksTableView: UITableView!
+    
     var deckModel: DeckSelectionModel!
 
     override func viewDidLoad() {
@@ -31,10 +33,35 @@ class DeckSelectionViewController: UIViewController, UITableViewDataSource, UITa
         performSegue(withIdentifier: "showDeck", sender: nil)
     }
     
+    
+    @IBAction func addDeck(_ sender: Any) {
+        let addDeckAlert = UIAlertController(title: "Add New Deck", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        
+        let addDeckAction = UIAlertAction(title: "Add Deck", style: UIAlertActionStyle.default) { [weak addDeckAlert] _ in
+            if let textFields = addDeckAlert?.textFields {
+               let deckNameTextField = textFields[0]
+               let deckName = deckNameTextField.text
+                
+                self.deckModel.addDeck(withTitle: deckName ?? "")
+                self.decksTableView.reloadData()
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel)
+        
+        addDeckAlert.addTextField { textField in textField.placeholder = "Deck name"
+        }
+        
+        addDeckAlert.addAction(addDeckAction)
+        addDeckAlert.addAction(cancelAction)
+        
+        self.present(addDeckAlert, animated: true)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.destination {
         case let flashCardController as FlashCardViewController:
-            let flashCardModel = FlashCardModel(cards: deckModel.deckForSelection())
+            let flashCardModel = FlashCardModel(deck: deckModel.deckForSelection())
             flashCardController.model = flashCardModel
         default:
             break

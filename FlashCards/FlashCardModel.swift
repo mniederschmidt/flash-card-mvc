@@ -2,19 +2,30 @@ import Foundation
 
 class FlashCardModel {
     
-    let cards: [Card]
+    private(set) var deck: Deck
     private var currentCardIndex = 0
     
-    init(cards: [Card]) {
-        self.cards = cards
+    init(deck: Deck) {
+        self.deck = deck
     }
     
-    func getCurrentCard() -> Card {
-        return cards[currentCardIndex]
+    func getCurrentCard() -> Card? {
+        if deck.cards.count > 0 {
+            return deck.cards[currentCardIndex]
+        }
+        return nil
+    }
+    
+    func selectCard(atIndex index: Int) {
+        currentCardIndex = index
+    }
+    
+    func addCardToDeck(withFront front: String, withBack back: String) {
+        deck.cards.append(Card(front: front, back: back))
     }
     
     func moveToNext() {
-        if currentCardIndex == cards.count - 1 {
+        if currentCardIndex == deck.cards.count - 1 {
             currentCardIndex = 0
         } else {
             currentCardIndex += 1
@@ -23,7 +34,7 @@ class FlashCardModel {
     
     func moveToPrevious() {
         if currentCardIndex == 0 {
-            currentCardIndex = cards.count - 1
+            currentCardIndex = deck.cards.count - 1
         } else {
             currentCardIndex -= 1
         }
